@@ -127,11 +127,20 @@ let rank2Filled = false;
 let rank3Filled = false;
 let rank4Filled= false;
 let rank5Filled = false;
+let foodsNamed = [];
 
 currentItem.textContent = getRandomFood(foods);
 
 function getRandomFood(foods) {
-    const randomIndex = getRandomInt(0,  foods.length -1);
+    let validRandomItem = false;
+    let randomIndex; 
+    while(!validRandomItem){
+      randomIndex = getRandomInt(0,  foods.length -1);
+      if(!foodsNamed.includes(foods[randomIndex])){
+        validRandomItem = true;
+      }
+    }
+    foodsNamed.push(foods[randomIndex]);
     return foods[randomIndex];
 }
 
